@@ -1,0 +1,44 @@
+/* - Check Background: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%) */
+/* - Font size: 18px */
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  /* font-size: 10px; */
+  /* 10px / 16px = 0.625 = 62.5% */
+  /* Percentage of user's browser font-size setting */
+  font-size: 62.5%;
+  overflow: hidden;
+}
+:root {
+  /* ### Primary */
+  --Bright-Blue: hsl(220, 98%, 61%);
+  /* ### Light Theme */
+  --Very-Light-Gray-Light: hsl(0, 0%, 98%);
+  --Very-Light-Grayish-Blue-Light: hsl(236, 33%, 92%);
+  --Light-Grayish-Blue-Light: hsl(233, 11%, 84%);
+  --Dark-Grayish-Blue-Light: hwb(237 58% 35%);
+  --Very-Dark-Grayish-Blue-Light: hsl(235, 19%, 35%);
+
+  /* ### Dark Theme */
+
+  --Very-Dark-Blue-Dark: hsl(235, 21%, 11%);
+  --Very-Dark-Desaturated-Blue-Dark: hsl(235, 24%, 19%);
+  --Light-Grayish-Blue-Dark: hsl(234, 39%, 85%);
+  --Light-Grayish-Blue-hover-Dark: hsl(236, 33%, 92%);
+  --Dark-Grayish-Blue-Light-Dark: hsl(234, 11%, 52%);
+  --Dark-Grayish-Blue-Medium-Dark: hsl(233, 14%, 35%);
+  --Dark-Grayish-Blue-Dark: hsl(237, 14%, 26%);
+}
+body {
+  font-family: "Josefin Sans", sans-serif;
+  line-height: 1;
+  font-weight: 400;
+  overflow-y: auto;
+  height: 100vh;
+  width: 100vw;
+}

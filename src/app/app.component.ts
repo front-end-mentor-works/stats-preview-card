@@ -1,10 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  SocialAuthService,
-  FacebookLoginProvider,
-  SocialUser,
-} from 'angularx-social-login';
-import { timeStamp } from 'console';
 
 @Component({
   selector: 'app-root',
@@ -41,7 +35,10 @@ export class AppComponent implements OnInit {
     },
   ];
   mode: 'dark' | 'light' = 'dark';
-  tasks = [...this.#tasks];
+  tasks: any;
+  ngOnInit() {
+    this.tasks = [...this.#tasks];
+  }
   swithModes() {
     this.mode = this.mode === 'light' ? 'dark' : 'light';
   }
@@ -65,46 +62,4 @@ export class AppComponent implements OnInit {
     this.tasks[index] = task;
     this.#tasks[i] = task;
   }
-
-
-
-
-
-
-
-  user: SocialUser;
-  isSignedin: boolean = false;;
-
-  constructor(
-    private socialAuthService: SocialAuthService,
-  ) {}
-
-  ngOnInit() {
-
-
-    this.socialAuthService.authState.subscribe((user) => {
-      this.user = user;
-      this.isSignedin = user != null;
-      if(!this.isSignedin){
-        this.logrrr()
-      }
-
-    });
-  }
-logrrr(){
-  console.log('HHHHHHHHHHHHHHHH');
-  
-}
-
-  facebookSignin(): void {
-    this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID);
-  }
-
-  logOut(): void {
-    this.socialAuthService.signOut();
-  }
-
-
-
-  
 }
