@@ -1,5 +1,5 @@
 # The project is live at
-https://front-end-mentor-works.github.io/todo-app-angular/
+https://sinan14.github.io/todo-app-angular/
 
 
 # FRONT
