@@ -105,7 +105,7 @@
   list-style-type: none;
   border-radius: 0.6rem 0.6rem 0 0;
   margin-top: 3rem;
-  max-height: 50rem;
+  max-height: 40rem;
   z-index: 9;
   overflow-y: auto;
   background-color: #fff;
@@ -365,18 +365,21 @@
         
         */
 
-.scroll::-webkit-scrollbar {
-  width: 12px;
+.todo--list::-webkit-scrollbar {
+  width: 1.2rem;
 }
-
-.scroll::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+.todo--list::-webkit-scrollbar-track {
+  border-radius: 1rem;
+  -webkit-box-shadow: inset 0 0 6px #fff;
+}
+.dark_mode .todo--list::-webkit-scrollbar-track {
+  /* -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); */
   -webkit-box-shadow: inset 0 0 6px var(--Very-Dark-Desaturated-Blue-Dark);
-  border-radius: 10px;
 }
-
-.scroll::-webkit-scrollbar-thumb {
-  border-radius: 10px;
+.todo--list::-webkit-scrollbar-thumb {
+  border-radius: 1rem;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+.dark_mode .todo--list::-webkit-scrollbar-thumb {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
-  /* -webkit-box-shadow: inset 0 0 6px var(--Very-Dark-Desaturated-Blue-Dark); */
 }

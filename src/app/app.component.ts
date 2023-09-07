@@ -52,7 +52,7 @@ export class AppComponent implements OnInit {
       status: 'active',
     },
   ];
-  mode: 'dark' | 'light' = 'dark';
+  mode: 'dark' | 'light' = 'light';
   tasks: Task[] = [];
   ngOnInit() {
     this.tasks = [...this.#tasks];
