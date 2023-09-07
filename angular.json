@@ -46,7 +46,8 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "baseHref": "https://front-end-mentor-works.github.io/todo-app-angular/"
             },
             "development": {
               "buildOptimizer": false,

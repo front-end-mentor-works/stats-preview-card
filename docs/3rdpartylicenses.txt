@@ -4,11 +4,14 @@ MIT
 @angular/core
 MIT
 
+@angular/forms
+MIT
+
 @angular/platform-browser
 MIT
 
-@angular/router
-MIT
+ngx-drag-drop
+BSD-3-Clause
 
 rxjs
 Apache-2.0

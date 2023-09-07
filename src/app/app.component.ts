@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DndDropEvent, DropEffect } from 'ngx-drag-drop';
 
 @Component({
   selector: 'app-root',
@@ -6,8 +7,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
+  todo = '';
+  addTodo() {
+    console.log('adding   ....');
+
+    const task = this.todo.trim();
+    this.todo = '';
+    if (task) {
+      this.tasks.push({
+        task,
+        status: 'active',
+      });
+      this.#tasks.push({
+        task,
+        status: 'active',
+      });
+    }
+  }
   currentStatus: string = 'all';
-  #tasks = [
+  #tasks: Task[] = [
     {
       task: 'Complete online JavaScript course',
       status: 'complete',
@@ -35,7 +53,7 @@ export class AppComponent implements OnInit {
     },
   ];
   mode: 'dark' | 'light' = 'dark';
-  tasks: any;
+  tasks: Task[] = [];
   ngOnInit() {
     this.tasks = [...this.#tasks];
   }
@@ -62,4 +80,28 @@ export class AppComponent implements OnInit {
     this.tasks[index] = task;
     this.#tasks[i] = task;
   }
+  onDrop(event: DndDropEvent, tasks: Task[]) {
+    console.log('on drop ==>', event);
+    let index = event.index;
+
+    if (typeof index === 'undefined') {
+      index = tasks.length;
+    }
+
+    tasks.splice(index, 0, event.data);
+    this.#tasks = [...this.tasks];
+  }
+  onDragged(task: Task, tasks: Task[], effect: DropEffect, ind: number) {
+    console.log('ON DRAGGED ==>', effect, ind);
+    const index = tasks.indexOf(task);
+    tasks.splice(index, 1);
+  }
+  clearCompleted() {
+    this.tasks = this.tasks.filter((task) => task.status === 'active');
+    this.#tasks = [...this.tasks];
+  }
+}
+interface Task {
+  task: string;
+  status: 'complete' | 'active';
 }

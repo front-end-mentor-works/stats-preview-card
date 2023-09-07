@@ -23,34 +23,50 @@
     </div>
     <div class="create--todo-box">
       <span class="rounded-circle"></span>
-      <input type="text" placeholder="Create a new todo" />
+      <input
+        [(ngModel)]="todo"
+        type="text"
+        placeholder="Create a new todo"
+        (keyup.enter)="addTodo()"
+      />
     </div>
-    <ul class="todo--list">
-      <ng-container *ngFor="let task of tasks; let rowIndex = index">
-        <li class="todo-item">
-          <div
-            (click)="completeTask(rowIndex)"
-            class="check_status"
-            [ngClass]="{
-              uncheck: task.status === 'active',
-              check: task.status === 'complete'
-            }"
-          >
-            <div>
-              <img
-                *ngIf="task.status === 'complete'"
-                src="assets/icon-check.svg"
-                alt=""
-              />
-            </div>
+    <ul
+      class="todo--list scroll"
+      dndDropzone
+      dndEffectAllowed="move"
+      (dndDrop)="onDrop($event, tasks)"
+    >
+      <li dndPlaceholderRef class="dndPlaceholder"></li>
+      <li
+        *ngFor="let task of tasks; let rowIndex = index"
+        class="todo-item"
+        [dndType]="'task'"
+        [dndDraggable]="task"
+        dndEffectAllowed="move"
+        (dndMoved)="onDragged(task, tasks, 'move', rowIndex)"
+      >
+        <div
+          (click)="completeTask(rowIndex)"
+          class="check_status"
+          [ngClass]="{
+            uncheck: task.status === 'active',
+            check: task.status === 'complete'
+          }"
+        >
+          <div>
+            <img
+              *ngIf="task.status === 'complete'"
+              src="assets/icon-check.svg"
+              alt=""
+            />
           </div>
-          <p class="task">{{ task.task }}</p>
+        </div>
+        <p class="task">{{ task.task }}</p>
 
-          <p class="todo_del">
-            <img src="assets/icon-cross.svg" alt="" />
-          </p>
-        </li>
-      </ng-container>
+        <p class="todo_del">
+          <img src="assets/icon-cross.svg" alt="" />
+        </p>
+      </li>
     </ul>
     <div class="todo--options">
       <p class="todo--options-left">5 items left</p>
@@ -74,7 +90,9 @@
           Completed
         </p>
       </div>
-      <p class="todo--options-clear">Clear Completed</p>
+      <p class="todo--options-clear" (click)="clearCompleted()">
+        Clear Completed
+      </p>
     </div>
     <div class="mobile_statuses">
       <p
